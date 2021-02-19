@@ -1,0 +1,31 @@
+{
+  "name": "hello-next",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "build-start": "next build && NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/next": "^9.0.0",
+    "@types/react": "^17.0.2",
+    "@zeit/next-typescript": "^1.1.1",
+    "classnames": "^2.2.6",
+    "evergreen-ui": "^4.3.0",
+    "express": "^4.17.1",
+    "ignore-styles": "^5.0.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^7.0.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-jss": "^10.5.1",
+    "react-markdown": "^4.0.3",
+    "react-scripts": "^4.0.2"
+  }
+}

@@ -1,11 +1,10 @@
 /* eslint-disable consistent-return */
-/* eslint-disable sonarjs/cognitive-complexity */
 // TODO fix this eslint error
 import { useEffect } from 'react';
 
 import getImageSource from '../utils/getImageSource';
 
-// import { UseLazyImageProps } from './types';
+import { IUseLazyImageProps } from './types';
 
 function useLazyImage({
   isSVG,
@@ -17,7 +16,7 @@ function useLazyImage({
   isGIF,
   params,
   breakpoint,
-}) {
+}: IUseLazyImageProps) {
   useEffect(() => {
     if (!isSVG && imageRef && (imageSrc === imagePlaceholder || imageSrc === gifPlaceholder)) {
       const observer = new IntersectionObserver(

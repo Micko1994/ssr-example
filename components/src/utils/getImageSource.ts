@@ -3,7 +3,7 @@ import { GetImageSource, ActionTypes } from './types';
 const getImageSource: GetImageSource = ({
   src,
   action = null,
-  r = 0,
+  r= 0,
   type = null,
 }) => {
   if (src.match(/^((http|https):\/\/)?cdn\d+\.picsart\.com\//)) {

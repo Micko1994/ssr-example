@@ -4,7 +4,7 @@ import getSourceFormat  from '../utils/getSourceFormat';
 
 import { ActionTypes } from '../utils/types';
 
-// import type { UseImageConvertParams } from './types';
+import { IUseImageConvertParams } from './types';
 
 const useImageConvertParams = ({
   src,
@@ -12,7 +12,7 @@ const useImageConvertParams = ({
   height,
   type = getSourceFormat(),
   action = ActionTypes.crop,
-}) =>
+}: IUseImageConvertParams) =>
   useMemo(
     () => ({
       src,

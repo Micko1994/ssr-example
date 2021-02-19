@@ -3,7 +3,7 @@ import { ActionTypes } from '../../utils/types';
 export type ImageProps = {
   alt: string;
   placeholder?: string;
-  src?: string;
+  src: string;
   isGIF?: boolean;
   width?: number;
   height?: number;

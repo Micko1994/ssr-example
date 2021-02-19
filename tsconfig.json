@@ -20,13 +20,8 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "module": "esnext",
-    "baseUrl": "src",
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true
-  },
-  "include": [
-    "src/**/*",
-    "@types"
-  ]
+  }
 }

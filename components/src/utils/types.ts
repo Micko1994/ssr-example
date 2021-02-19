@@ -9,10 +9,10 @@ export type pictureTo = ActionTypes.crop | ActionTypes.fixed | ActionTypes.min;
 export type ImageSrcParams = {
     src: string;
     action: pictureTo;
-    r: any;
-    type: string | null;
+    r?: any;
+    type?: string | null;
 }
-  
+
 export type GetImageSource = (params: ImageSrcParams) => string;
 
 export type SVGType = (pattern: string) => boolean;

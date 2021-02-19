@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 
 import classNames from 'classnames';
 import getImageSource  from '../../utils/getImageSource';
@@ -13,10 +13,11 @@ import { BreakPoints } from '../../configs/jss';
 
 import usePhotoCardStyles from './styles';
 
-import type { ImageProps, MediaSources } from './types';
+import { ImageProps, MediaSources } from './types';
+import { ActionTypes } from '../../utils/types';
+// import classes from '*.module.css';
 
 function ImagePlaceholder({
-  placeholderClassName,
   className,
   alt,
   placeholder,
@@ -25,12 +26,12 @@ function ImagePlaceholder({
   width,
   height,
   media = BreakPoints,
-  action,
+  action = ActionTypes.crop,
 }: ImageProps) {
   const params = useImageConvertParams({ width, height, src, action });
   const breakpoint = useBreakPoint(useWindowSize()) || 'Medium';
 
-  const isSVG = useMemo(() => isSvg(src =''), [src]);
+  const isSVG = useMemo(() => isSvg(src =''), [src]);  
   const { gifPlaceholder, imagePlaceholder } = useMemo(
     () => ({
       gifPlaceholder: `${getImageSource({ ...params, r: 80, type: null })}`,
@@ -74,7 +75,7 @@ function ImagePlaceholder({
   // @ts-ignore
     breakpoint: media && media[breakpoint],
   });
-  const { image, imagePlaceHolder } = usePhotoCardStyles();
+  const { root, image } = usePhotoCardStyles();
 
   const mediaSources = useMemo<MediaSources>(
     () =>
@@ -87,14 +88,14 @@ function ImagePlaceholder({
   );
 
   if (isSVG) {
-    const imgClassName = classNames(className, image);
+    const imgClassName = classNames(className, image, 'svg');
     return <img className={imgClassName} alt={alt} src={src} />;
   }
 
   const currentSource = error ? '/assets/images/nf.png' : imageSrc;
-
+  
   return (
-    <picture>
+    <picture className={classNames(root, className)}>
       {!isGIF && media && (
         <>
           {mediaSources.map(([size, source, bp], id: number) => {
@@ -123,11 +124,10 @@ function ImagePlaceholder({
         </>
       )}
       <img
-        data-src={src}
-        className={classNames({
-          [imagePlaceHolder]: isPlaceholder,
-          [image]: !isPlaceholder,
-        }, className, placeholderClassName)}
+        // data-src={src}
+        className={classNames(image, 'default', {
+          'placeholder': isPlaceholder,
+        })}
         ref={setImageRef as any}
         src={currentSource}
         alt={alt}

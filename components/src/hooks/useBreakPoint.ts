@@ -27,7 +27,7 @@ const useBreakPoint = ({ width  }: { width: number }) => {
     }
   }, [width]);
 
-  return breakpoint;
+  return breakpoint as string;
 };
 
 export default useBreakPoint;
